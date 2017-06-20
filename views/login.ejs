@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vinyl</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <script type="text/javascript" src="/script.js"></script>
+</head>
+<body>
+    <div class="title-bar">
+        <a href="/">
+            <h3 class="app-title">Vinyl</h3>  
+        </a>
+        <nav class="navbar">
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Sign In</a>
+        </nav>
+    
+    </div>
+    <div>
+      <form class="vinyl-signup-form signup-container" method="POST" action="/login">
+
+            <h3>Log In</h3>
+
+            <label>Email:</label>
+            <input name="email" type="text">
+
+            <label>Password:</label>
+            <input name="password">
+
+            <input type="submit" value="Log In">
+
+        </form>
+          <%- messages() %>
+    </div>
+</body>
+</html>
