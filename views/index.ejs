@@ -6,9 +6,28 @@
   <script type="text/javascript" src="/script.js"></script>
 </head>
 <body>
+ <div class="title-bar">
+    
+    <h3 class="app-title">Vinyl</h3>  
+    
+    <nav class="navbar">
+      <% if (!user) { %>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Sign In</a>
+      <% } %>
+      <% if (user) { %>
+      <a href="/users/<%= user.id %>">Profile</a>
+      <a href="/logout">Logout</a>
+      <% } %>
 
-  <h1>Vinyl</h1>
-
+    </nav>
+    
+  </div>
+  
+  <div class="splash-image">
+  <!--<img src="http://lorempixel.com/g/1200/300/cats">-->
+    
+  </div>
   <h2>Records</h2>
 
   <div class="album-list">
