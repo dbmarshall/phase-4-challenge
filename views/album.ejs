@@ -2,17 +2,28 @@
 <html>
 <head>
   <title>Vinyl : <%= album.title %></title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+	<% include partials/imports %>
 </head>
-<body>
+<body onload="addDeleteFunction()">
+   <% include partials/navbar %>
 
-  <h1><%= album.title %></h1>
-  <em>by <%= album.artist %></em>
+	<div class="container">
 
-  <h2>Reviews</h2>
+		<div class="album-details">
+			<h1><%= album.title %></h1>
+			<em>by <%= album.artist %></em>
 
-  <!-- TODO: implement album reviews -->
+			<a href="/albums/<%= album.id %>/submit_review"><button>Add Review</button></a>
+		</div>
+
+		<div class="album-reviews">
+			<h2>Reviews</h2>
+  		<!-- TODO: implement album reviews -->
+			<% for (var x=reviews.length-1; x > -1; x-- ) { %>
+				<% include partials/review %>
+				<% } %>
+		</div>
+	</div>
 
 </body>
 </html>

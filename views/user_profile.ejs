@@ -2,28 +2,25 @@
 <html>
 <head>
   <title>Vinyl - <%= user.name %></title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+	<% include partials/imports %>
 </head>
-<body>
- <div class="title-bar">
-    <a href="/home">
-        <h3 class="app-title">Vinyl</h3>  
-    </a>
-    <nav class="navbar">
-      <a href="/home">Home</a>
-      <a href="/logout">Logout</a>
-    </nav>
-  </div>
+<body onload="addDeleteFunction()">
+  <% include partials/navbar %>
   <div class="user-profile">
 
     <div class="user-profile-details">
-
       <span><%= user.name %></span>
       <span><%= user.email %></span>
-
-
     </div>
+
+		<div class="user-profile-reviews">
+			<h2>Reviews</h2>
+  		<!-- TODO: implement album reviews -->
+			<% for (var x=reviews.length-1; x > -1; x-- ) { %>
+				<% include partials/review %>
+			<% } %>
+		</div>
+		</div>
 
     </div>
 

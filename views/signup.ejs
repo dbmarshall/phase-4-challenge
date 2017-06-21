@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Vinyl</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+  <title>Vinyl - Signup</title>
+	<% include partials/imports %>
 </head>
 <body>
-    <div class="title-bar">
-        <a href="/">
-            <h3 class="app-title">Vinyl</h3>  
-        </a>
-        <nav class="navbar">
-            <a href="/signup">Sign Up</a>
-            <a href="/login">Sign In</a>
-        </nav>
-    
-    </div>
+    <% include partials/navbar %>
     <div>
         <form class="vinyl-signup-form signup-container" method="POST" action="/signup">
 

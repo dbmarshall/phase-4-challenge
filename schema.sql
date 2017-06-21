@@ -1,32 +1,24 @@
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
-  title VARCHAR(255) NOT NULL,
+  title VARCHAR(255) UNIQUE NOT NULL,
   artist VARCHAR(255) NOT NULL
-);
-
-CREATE TABLE reviews (
-  id SERIAL PRIMARY KEY,
-  content VARCHAR(1200) NOT NULL
 );
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
-  email VARCHAR(255) NOT NULL UNIQUE,
+  name VARCHAR(255) UNIQUE NOT NULL,
+  email VARCHAR(255) UNIQUE NOT NULL,
   password VARCHAR(255) NOT NULL,
-  joined_date TIMESTAMP
+  date_joined TIMESTAMP
 );
 
-CREATE TABLE album_reviews (
-  album_id INTEGER REFERENCES albums (id) NOT NULL,
-  review_id INTEGER REFERENCES reviews (id) NOT NULL
+CREATE TABLE reviews (
+  id SERIAL PRIMARY KEY,
+  content VARCHAR(1200) NOT NULL,
+  date_created TIMESTAMP,
+	author_id INTEGER REFERENCES users (id) NOT NULL,
+	album_id INTEGER REFERENCES albums (id) NOT NULL
 );
-
-CREATE TABLE user_reviews (
-  user_id INTEGER REFERENCES users (id) NOT NULL,
-  review_id INTEGER REFERENCES reviews (id) NOT NULL
-);
-
 
 CREATE TABLE session (
   sid varchar NOT NULL COLLATE "default",

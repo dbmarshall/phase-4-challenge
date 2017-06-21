@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vinyl - Add a Review</title>
+	<% include partials/imports %>
+</head>
+<body>
+  <% include partials/navbar %>
+  <div>
+		<h3>Submit a review for <%= album.name %></h3>
+		<form name="submit-review-form" action="/review" method="POST">
+			<input type="hidden" name="albumID" value="<%= album.id %>">
+			<textarea name="content"></textarea>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+	<%- messages() %>
+</body>
+</html>
