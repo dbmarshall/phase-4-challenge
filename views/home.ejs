@@ -8,21 +8,22 @@
   <% include partials/navbar %>
   
   <div class="splash-image"></div>
-  <h2>Records</h2>
 
-  <div class="album-list">
+	<div class="home-content">
+  
+  <div class="list album-list">
+	<h2>Records</h2>
     <% albums.forEach(function(album) { %>
-      <div>
-        <h5><a href="/albums/<%= album.id %>"><%= album.title %></a></h5>
-        <span><%= album.artist %></span>
-      </div>
+			<% include partials/album_entry %>
     <% }) %>
   </div>
-
-	<div class="latest-reviews-list">
+	<div class="latest-reviews-list list">
+	<h2>Recent Reviews</h2>
 			<% for (var x=reviews.length-1; x > -1; x-- ) { %>
 				<% include partials/review %>
 			<% } %>
+	</div>
+
 	</div>
 
 </body>

@@ -6,16 +6,31 @@
 </head>
 <body onload="addDeleteFunction()">
   <% include partials/navbar %>
+
   <div class="user-profile">
 
-    <div class="user-profile-details">
-      <span><%= user.name %></span>
-      <span><%= user.email %></span>
+    <div class="user-profile-info">
+			<div class="user-profile-pic">
+				<figure class="user-pic">
+					<img src="http://via.placeholder.com/200x200">
+				</figure>			
+			</div>
+
+			<div class="user-profile-details">
+				<h1><%= user.name %></h1>
+				<div class="user-profile-details-entry">
+					<span>Email: </span>
+					<span><%= user.email %></span>
+				</div>
+				<div class="user-profile-details-entry">
+					<span>Join Date: </span>
+					<span>DATE</span>
+				</div>
+			</div>
     </div>
 
 		<div class="user-profile-reviews">
 			<h2>Reviews</h2>
-  		<!-- TODO: implement album reviews -->
 			<% for (var x=reviews.length-1; x > -1; x-- ) { %>
 				<% include partials/review %>
 			<% } %>

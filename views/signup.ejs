@@ -6,21 +6,26 @@
 </head>
 <body>
     <% include partials/navbar %>
-    <div>
-        <form class="vinyl-signup-form signup-container" method="POST" action="/signup">
+    <div class="container">
+        <form class="vinyl-form signup-container" method="POST" action="/signup">
+						
+				<h3>Sign up for Vinyl</h3>
+						<div class="vinyl-form-input">
+            	<span>Name:</span>
+            	<input name="username" type="text">
+						</div>
 
-            <h3>Sign up for Vinyl</h3>
+						<div class="vinyl-form-input">
+							<span>Email:</span>
+							<input name="useremail">
+						</div>
 
-            <label>Name:</label>
-            <input name="username" type="text">
+						<div class="vinyl-form-input">
+							<span>Password:</span>
+							<input name="userpassword">
+						</div>
 
-            <label>Email:</label>
-            <input name="useremail">
-
-            <label>Password:</label>
-            <input name="userpassword">
-
-            <input type="submit" value="Sign Up">
+            <button type="submit">Sign Up</button>
 
         </form>
         <%- messages() %>

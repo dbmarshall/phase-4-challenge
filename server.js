@@ -23,7 +23,6 @@ app.use(passport.session())
 require('ejs')
 app.set('view engine', 'ejs');
 app.use(express.static('public'))
-
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(flash())
@@ -33,7 +32,6 @@ app.use(function( request, response, next) {
 })
 
 app.use(routes)
-
 
 passport.use(new LocalStrategy({
   usernameField: 'email',
