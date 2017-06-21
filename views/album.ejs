@@ -13,15 +13,19 @@
 			<h1><%= album.title %></h1>
 			<em>by <%= album.artist %></em>
 
-			<a href="/albums/<%= album.id %>/submit_review"><button>Add Review</button></a>
+		
 		</div>
 
 		<div class="album-reviews">
-			<h2>Reviews</h2>
-  		<!-- TODO: implement album reviews -->
-			<% for (var x=reviews.length-1; x > -1; x-- ) { %>
-				<% include partials/review %>
-				<% } %>
+			<div class="album-reviews-header">
+				<h2>Reviews</h2>
+				<a href="/albums/<%= album.id %>/submit_review"><button>Add Review</button></a>
+			</div>
+			<div class="list album-reviews-list">
+				<% for (var x=reviews.length-1; x > -1; x-- ) { %>
+					<% include partials/review %>
+					<% } %>
+			</div>
 		</div>
 	</div>
 

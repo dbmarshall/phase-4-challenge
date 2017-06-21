@@ -6,13 +6,15 @@
 </head>
 <body>
   <% include partials/navbar %>
-  <div>
-		<h3>Submit a review for <%= album.name %></h3>
-		<form name="submit-review-form" action="/review" method="POST">
-			<input type="hidden" name="albumID" value="<%= album.id %>">
-			<textarea name="content"></textarea>
-			<input type="submit" value="Submit">
-		</form>
+  <div class="container">
+		<!-- <div class="submit-review-container"> -->
+			<form class="submit-review-form" action="/review" method="POST">
+				<h3>New review for <span><%= album.title %></span></h3>
+				<input type="hidden" name="albumID" value="<%= album.id %>">
+				<textarea name="content" rows="10" cols="40" required></textarea>
+				<input type="submit" value="Submit">
+			</form>
+		<!-- </div> -->
 	</div>
 	<%- messages() %>
 </body>

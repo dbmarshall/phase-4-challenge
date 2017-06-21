@@ -64,6 +64,34 @@ router.post('/signup', (request, response) => {
   })
 })
 
+router.get('/home/profile', isAuthenticated, (request, response) => {
+	let user = request.user[0]
+	database.Reviews.getByAuthorID(user.id, (error, reviews) => {
+		if (error) {
+			response.status(500).render('error', {error: error, user: request.user[0]})
+		} else {
+			response.render('user_profile', {reviews: reviews, user: request.user[0]})
+		}
+	})
+})
+
+router.get('/users/:userID', (request, response) => {
+	let {userID} = request.params
+	database.User.findByID(userID, (error, user) => {
+		if (error) {
+			response.status(500).render('error', {error: error, user: request.user ? request.user[0] : null})
+		} else {
+			database.Reviews.getByAuthorID(user[0].id, (error, reviews) => {
+				if (error) {
+			response.status(500).render('error', {error: error, user: request.user ? request.user[0] : null})
+		} else {
+  			response.render('user_profile', {reviews: reviews, user: user[0]})
+		}
+			})
+		}
+	})
+})
+
 router.get('/home', isAuthenticated, (request, response) => {
   let user = request.user[0]
   database.getAlbums((error, albums) => {
@@ -135,35 +163,6 @@ router.delete('/review', isAuthenticated, (request, response) => {
 			response.status(500).render('error', {error: error, user: request.user[0]})
 		} else {
 			response.sendStatus(200)
-		}
-	})
-
-})
-
-router.get('/home/profile', isAuthenticated, (request, response) => {
-	let user = request.user[0]
-	database.Reviews.getByAuthorID(user.id, (error, reviews) => {
-		if (error) {
-			response.status(500).render('error', {error: error, user: request.user[0]})
-		} else {
-			response.render('user_profile', {reviews: reviews, user: request.user[0]})
-		}
-	})
-})
-
-router.get('/users/:userID', (request, response) => {
-	let {userID} = request.params
-	database.User.findByID(userID, (error, user) => {
-		if (error) {
-			response.status(500).render('error', {error: error, user: request.user ? request.user[0] : null})
-		} else {
-			database.Reviews.getByAuthorID(user[0].id, (error, reviews) => {
-				if (error) {
-			response.status(500).render('error', {error: error, user: request.user ? request.user[0] : null})
-		} else {
-  			response.render('user_profile', {reviews: reviews, user: user[0]})
-		}
-			})
 		}
 	})
 })
