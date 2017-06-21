@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>Vinyl</title>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <script type="text/javascript" src="/script.js"></script>
+	<% include partials/imports %>
 </head>
 <body>
+    <% include ./partials/navbar %>
     <div class="container">
         <div>
             <h1>Vinyl</h1>
@@ -14,9 +14,8 @@
 
             <a href="/signup">Sign Up</a>
             <a href="/login">Sign In</a>
-
-
     </div>
+    <%- messages() %>
 
 
 </body>

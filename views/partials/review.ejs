@@ -1,0 +1,10 @@
+<article class="review">
+	<header class="review-top-bar">
+	<span><a href="/albums/<%= reviews[x].album_id %>"><%= reviews[x].album_title %></a></span>
+		<% if ( reviews[x].author_id === user.id ) { %>
+			<div class="fa fa-trash delete-review-link" data-review_id="<%= reviews[x].id %>"></div>
+		<% } %>
+	</header>
+	<section><%= reviews[x].content %></section>
+	<footer class="review-footer">by: <a href="/users/<%= reviews[x].author_id %>"><%= reviews[x].author %></a></footer>
+</article>

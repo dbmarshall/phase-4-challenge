@@ -1,0 +1,15 @@
+<div class="title-bar">
+    <a href="/home">
+        <h3 class="app-title">Vinyl</h3>  
+    </a>
+    <nav class="navbar">
+      <% if (!user) { %>
+      <a href="/signup">Sign Up</a>
+      <a href="/login">Sign In</a>
+      <% } %>
+      <% if (user) { %>
+      <a href="/home/profile">Profile</a>
+      <a href="/logout">Logout</a>
+      <% } %>
+    </nav>
+  </div>

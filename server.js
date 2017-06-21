@@ -15,7 +15,7 @@ app.use(session({
   secret: 'steez',
   resave: false,
   saveUninitialized: true,
-  cookie: {maxAge: 60000}
+  cookie: {maxAge: 3600000}
 }))
 app.use(passport.initialize())
 app.use(passport.session())
@@ -25,6 +25,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(flash())
 app.use(function( request, response, next) {
   response.locals.messages = require('express-messages')(request, response)
@@ -55,13 +56,14 @@ passport.serializeUser(function(user, done) {
   done(null, user.id)
 })
 passport.deserializeUser(function(id, done) {
-  database.User.findById(id, function(error, user) {
+  database.User.findByID(id, function(error, user) {
     done(null, user)
   })
 })
 
 app.use((request, response) => {
-  response.status(404).render('not_found')
+	let user = request.user ? request.user[0] : null
+  response.status(404).render('not_found', {user: user})
 })
 
 const port = process.env.PORT || 3000
